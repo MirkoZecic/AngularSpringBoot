@@ -1,0 +1,59 @@
+<div class="submit-form">
+    <div class="form-group">
+        <label for="brojRacuna">Broj racuna</label>
+        <input [disabled]="onemogucenaForma" type="number" class="form-control" id="KlijentID" required
+            [(ngModel)]="racun.brojRacuna" name="brojRacuna" />
+    </div>
+
+    <div class="form-group">
+        <label for="TipRacuna">Tip racuna</label>
+        <select [disabled]="onemogucenaForma" class="form-select" aria-label="Default select example"
+            [(ngModel)]="racun.tipRacuna">
+            <option hidden value=''>Odaberite tip</option>
+            <option *ngFor="let tip of tipoviRacuna" value='{{tip}}'>{{tip}}</option>
+        </select>
+    </div>
+
+    <button (click)="pronadjiRacun()" class="btn btn-success">Pronadji racun</button>
+
+    <div class="form-group">
+        <label for="stanjeID">StanjeId</label>
+        <input [disabled]="onemogucenaForma" type="number" class="form-control" id="stanjeID" required
+            [(ngModel)]="trenutnoStanje.stanjeID" name="stanjeID" />
+    </div>
+
+    <div class="form-group">
+        <label for="iznosStanja">Iznos stanja</label>
+        <input [disabled]="onemogucenaForma" type="number" class="form-control" id="iznosStanja" required
+            [(ngModel)]="trenutnoStanje.iznosStanja" name="iznosStanja" />
+    </div>
+
+    <button (click)="kreirajStanje()" class="btn btn-success">Kreiraj stanje</button>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">RB</th>
+                <th scope="col">StanjeID</th>
+                <th scope="col">Iznos stanja</th>
+                <th scope="col">Akcije</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr app-stanje-detalji *ngFor="let stanje of racun.stanja" [trenutnoStanje]="stanje" [racunRb]="racun.rb!"
+                [onemogucenaIzmena]="false" (izmeniStanjeEvent)="izmeniStanje($event)"
+                (obrisiStanjeEvent)="obrisiStanje($event)">
+            </tr>
+        </tbody>
+    </table>
+
+    <button (click)="potvrdiUnos()" class="btn btn-success">Potvrdi unos</button>
+    <button (click)="odustani()" class="btn btn-danger">Odustani</button>
+
+    <p class="alert alert-success" *ngIf="uspesnaPoruka!=''">{{uspesnaPoruka}} <i class="fa fa-times" aria-hidden="true"
+            (click)="zatvoriAlert('uspesno')"></i></p>
+
+    <p class="alert alert-danger" *ngIf="greska!=''">{{greska}} <i class="fa fa-times" aria-hidden="true"
+            (click)="zatvoriAlert('neuspesno')"></i></p>
+
+</div>

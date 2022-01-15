@@ -1,0 +1,34 @@
+<div>
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a href="#" class="navbar-brand">Odobravanje kredita</a>
+
+    <div class="navbar-nav mr-auto">
+      <div class="dropdown">
+        <button class="btn text-white dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Klijent
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a routerLink="klijenti" class="dropdown-item">Svi klijenti</a></li>
+          <li><a routerLink="dodajKlijenta" class="dropdown-item">Dodaj klijenta</a></li>
+        </ul>
+      </div>
+
+      <div class="dropdown">
+        <button class="btn text-white dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Stanja
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a routerLink="stanja" class="dropdown-item">Sva stanja</a></li>
+          <li><a routerLink="dodajStanje" class="dropdown-item">Dodaj stanje</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
+  <div class="container mt-3">
+    <router-outlet></router-outlet>
+  </div>
+</div>

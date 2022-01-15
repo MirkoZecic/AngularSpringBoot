@@ -1,0 +1,45 @@
+<div class="submit-form">
+    <div class="form-group">
+        <label for="KlijentID">Racun</label>
+        <select [disabled]="onemogucenaForma" class="form-select" aria-label="Default select example"
+            [(ngModel)]="odabraniRacunID">
+            <option hidden value='-1'>Odaberite racun</option>
+            <option *ngFor="let racun of racuni" value='{{racun.rb}}'>{{racun.brojRacuna}}</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="KlijentID">KlijentID</label>
+        <input [disabled]="onemogucenaForma" type="number" class="form-control" id="KlijentID" required
+            [(ngModel)]="klijent.klijentID" name="KlijentID" />
+    </div>
+
+    <div class="form-group">
+        <label for="PIB">PIB</label>
+        <input [disabled]="onemogucenaForma" class="form-control" id="PIB" required [(ngModel)]="klijent.pib"
+            name="PIB" />
+    </div>
+
+    <div class="form-group">
+        <label for="AdresaISediste">Adresa i sediste</label>
+        <input [disabled]="onemogucenaForma" class="form-control" id="AdresaISediste" required
+            [(ngModel)]="klijent.adresaISediste" name="AdresaISediste" />
+    </div>
+
+    <div class="form-group">
+        <label for="ImeIPrezime">Ime i prezime</label>
+        <input [disabled]="onemogucenaForma" type="text" class="form-control" id="ImeIPrezime" required
+            [(ngModel)]="klijent.imeIPrezime" name="ImeIPrezime" />
+    </div>
+
+    <button (click)="dodajKlijenta()" class="btn btn-success">Postavi klijenta</button>
+
+    <button (click)="postaviKlijentaNaRacunu()" class="btn btn-success">Sacuvaj</button>
+
+    <p class="alert alert-success" *ngIf="uspesnaPoruka!=''">{{uspesnaPoruka}} <i class="fa fa-times" aria-hidden="true"
+            (click)="zatvoriAlert('uspesno')"></i></p>
+
+    <p class="alert alert-danger" *ngIf="greska!=''">{{greska}} <i class="fa fa-times" aria-hidden="true"
+            (click)="zatvoriAlert('neuspesno')"></i></p>
+
+</div>

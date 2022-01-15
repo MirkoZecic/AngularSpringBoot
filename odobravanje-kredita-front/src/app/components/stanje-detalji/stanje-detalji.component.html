@@ -1,0 +1,13 @@
+<td><input [disabled]="onemogucenaIzmena" type="number" class="form-control" id="rb" required [(ngModel)]="racunRb" name="rb" />
+</td>
+<td><input [disabled]="onemogucenaIzmena" type="number" class="form-control" id="stanjeID" required [(ngModel)]="trenutnoStanje.stanjeID"
+        name="stanjeID" />
+</td>
+<td><input [disabled]="onemogucenaIzmena" type="number" class="form-control" id="iznosStanja" required [(ngModel)]="trenutnoStanje.iznosStanja"
+        name="iznosStanja" /></td>
+<td><button *ngIf="!onemogucenaIzmena" class="btn btn-warning" (click)="izmeniOvoStanje()">
+        Izmeni
+    </button></td>
+<td><button *ngIf="!onemogucenaIzmena" class="btn btn-danger" (click)="obrisiOvoStanje()">
+        Obrisi
+    </button></td>

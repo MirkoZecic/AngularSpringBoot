@@ -1,0 +1,36 @@
+<!-- <div class="col-md-8">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search by title" [(ngModel)]="title" />
+            <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchTitle()"
+          >
+            Search
+          </button> 
+        </div>
+        </div>
+    </div> -->
+
+<h4>Klijenti</h4>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Klijent ID</th>
+      <th scope="col">PIB</th>
+      <th scope="col">Adresa i sediste</th>
+      <th scope="col">Ime i prezime</th>
+      <th scope="col">Racun</th>
+      <th scope="col">Akcija</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr app-klijent-detalji *ngFor="let klijent of klijenti; index as i" [trenutniKlijent]="klijent"
+      [brojRacuna]="brojeviRacuna[i]" (izmeniKlijentaEvent)="izmeniKlijenta($event)">
+    </tr>
+  </tbody>
+</table>
+
+<p class="alert alert-success" *ngIf="uspesnaIzmena">Uspesno ste izmenili klijenta! <i class="fa fa-times"
+    aria-hidden="true" (click)="zatvoriAlert()"></i></p>

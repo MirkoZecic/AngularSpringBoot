@@ -1,0 +1,13 @@
+<td><input disabled type="number" class="form-control" id="klijentId" required [(ngModel)]="trenutniKlijent.klijentID"
+                name="klijentId" /></td>
+<td><input type="text" class="form-control" id="pib" required [(ngModel)]="trenutniKlijent.pib" name="pib" />
+</td>
+<td><input type="text" class="form-control" id="adresaISediste" required [(ngModel)]="trenutniKlijent.adresaISediste"
+                name="adresaISediste" /></td>
+<td><input disabled type="text" class="form-control" id="imeIPrezime" required [(ngModel)]="trenutniKlijent.imeIPrezime"
+                name="imeIPrezime" /></td>
+<td><input disabled type="number" class="form-control" id="brojRacuna" required [(ngModel)]="brojRacuna"
+                name="brojRacuna" /></td>
+<td><button class="btn btn-warning" (click)="izmeniOvogKlijenta()">
+                Izmeni
+        </button></td>
