@@ -12,8 +12,8 @@ export class RacunService {
 
   constructor(private http: HttpClient) { }
 
-  vratiSve(): Observable<Racun[]> {
-    return this.http.get<Racun[]>(`${baseUrl}/vratiSve`);
+  vratiSveSlobodne(): Observable<Racun[]> {
+    return this.http.get<Racun[]>(`${baseUrl}/vratiSveSlobodne`);
   }
 
   vratiJedan(brojRacuna: number, tipRacuna: string): Observable<Racun> {

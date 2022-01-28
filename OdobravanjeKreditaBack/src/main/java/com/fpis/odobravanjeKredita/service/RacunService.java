@@ -22,8 +22,8 @@ public class RacunService {
     private final RacunMapper racunMapper;
 
 
-    public List<RacunDTO> vratiSveRacune() {
-        return racunRepository.findAll().stream().map(rac -> racunMapper.toDto(rac)).collect(Collectors.toList());
+    public List<RacunDTO> vratiSveSlobodneRacune() {
+        return racunRepository.vratiSveSlobodne().stream().map(rac -> racunMapper.toDto(rac)).collect(Collectors.toList());
     }
 
     public RacunDTO postaviKlijenta(RacunDTO racunDto) {

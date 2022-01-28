@@ -31,9 +31,9 @@ export class DodajKlijentaComponent implements OnInit {
   }
 
   ucitajRacune(): void {
-    this.racunService.vratiSve().subscribe({
+    this.racunService.vratiSveSlobodne().subscribe({
       next: (data) => {
-        this.racuni = data;
+        this.racuni = data
         console.log(data);
       },
       error: (e) => console.error(e)

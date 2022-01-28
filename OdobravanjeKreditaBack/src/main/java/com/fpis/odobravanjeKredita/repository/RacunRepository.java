@@ -26,6 +26,9 @@ public interface RacunRepository extends JpaRepository<Racun, Integer> {
     @Query(value = "SELECT * FROM racun WHERE klijent_Id=:klijentId", nativeQuery = true)
     Racun findByKlientId(@Param("klijentId") Integer klijentID);
 
+    @Query(value = "SELECT * FROM racun WHERE klijent_Id IS NULL", nativeQuery = true)
+    List<Racun> vratiSveSlobodne();
+
     @Query(value = "SELECT DISTINCT tip_racuna FROM racun", nativeQuery = true)
     List<String> vratiSveTipove();
 

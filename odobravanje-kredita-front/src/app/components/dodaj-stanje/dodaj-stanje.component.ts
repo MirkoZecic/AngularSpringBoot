@@ -28,6 +28,7 @@ export class DodajStanjeComponent implements OnInit {
   odabraniTip: string = 'default';
 
   onemogucenaForma: boolean = false;
+  postavljenRacun: boolean = false;
 
   uspesnaPoruka: string = '';
   greska: string = '';
@@ -49,21 +50,26 @@ export class DodajStanjeComponent implements OnInit {
   }
 
   pronadjiRacun(): void {
-    if (!this.frontObrada())
+    if (!this.racunObrada())
       return;
 
     this.racunService.vratiJedan(this.racun.brojRacuna!, this.racun.tipRacuna!).subscribe({
       next: (data) => {
         this.racun = data;
+        this.postavljenRacun = true;
         console.log(data);
         this.uspesnaPoruka = 'Uspesno postavljen racun!';
       },
-      error: (e) => this.backObradaGreske(e)
+      error: (e) => {
+        this.resetujRacun();
+        this.backObradaGreske(e)
+      }
     });
   }
 
   kreirajStanje(): void {
-    this.racun.stanja!.push(JSON.parse(JSON.stringify(this.trenutnoStanje)));
+    if (this.stanjeObrada())
+      this.racun.stanja!.push(JSON.parse(JSON.stringify(this.trenutnoStanje)));
   }
 
 
@@ -88,15 +94,33 @@ export class DodajStanjeComponent implements OnInit {
     });
   }
 
-  frontObrada(): boolean {
+  stanjeObrada(): boolean {
+    this.greska = '';
+
+    if (!this.postavljenRacun) {
+      this.greska += "Morate postaviti racun!";
+    }
+
+    if (!Number.isSafeInteger(this.trenutnoStanje.stanjeID)) {
+      this.greska += "\nStanjeID biti u opsegu integer vrednosti!";
+    }
+
+    if (!Number.isSafeInteger(this.trenutnoStanje.iznosStanja)) {
+      this.greska += "\nIznos stanja mora biti u opsegu integer vrednosti!";
+    }
+
+    return this.greska == '';
+  }
+
+  racunObrada(): boolean {
     this.greska = '';
 
     if (!Number.isSafeInteger(this.racun.brojRacuna)) {
-      this.greska = "KorisnikID mora biti u opsegu integer vrednosti!";
+      this.greska = "Broj racuna mora biti u opsegu integer vrednosti!\n";
     }
 
     if (this.racun.tipRacuna == '') {
-      this.greska += "\nMorate odabrati tip racuna!";
+      this.greska += "Morate odabrati tip racuna!";
     }
 
     return this.greska == '';
@@ -111,6 +135,17 @@ export class DodajStanjeComponent implements OnInit {
     else {
       this.greska = "Neocekivana greska";
     }
+  }
+
+  resetujRacun() {
+    this.racun = {
+      rb: 0,
+      brojRacuna: 0,
+      tipRacuna: '',
+      stanja: [],
+      klijent: {}
+    };
+    this.postavljenRacun = false;
   }
 
   zatvoriAlert(tip: string): void {

@@ -17,14 +17,14 @@ public class RacunKontroller {
     @Autowired
     private final RacunService racunService;
 
-    @GetMapping("/vratiSve")
-    public List<RacunDTO> vratiSveRacune() {
-        return racunService.vratiSveRacune();
+    @GetMapping("/vratiSveSlobodne")
+    public List<RacunDTO> vratiSveSlobodneRacune() {
+        return racunService.vratiSveSlobodneRacune();
     }
 
     @GetMapping(path = "/vratiJedan")
     public RacunDTO follow(@RequestParam Integer broj, @RequestParam String tip) {
-        return racunService.vratiJedan(broj,tip);
+        return racunService.vratiJedan(broj, tip);
     }
 
     @GetMapping("/vratiKlijentovRacun/{klijentId}")
