@@ -40,11 +40,12 @@ export class DodajKlijentaComponent implements OnInit {
     });
   }
 
-  postaviKlijentaNaRacunu(): void {
+  sacuvaj(): void {
     this.racunService.postaviKlijentaNaRacunu(this.racuni.find(rac => rac.rb == this.odabraniRacunID)!).subscribe({
       next: (data) => {
         console.log(data);
         this.uspesnaPoruka = 'Uspesno ste postavili klijenta na racun';
+        this.racuni = this.racuni.filter(rac => rac.rb != this.odabraniRacunID)
       },
       error: (e) => console.error(e)
     });
@@ -78,7 +79,7 @@ export class DodajKlijentaComponent implements OnInit {
     }
   }
 
-  dodajKlijenta(): void {
+  postaviKlijenta(): void {
     if (!this.frontObrada()) {
       return;
     }

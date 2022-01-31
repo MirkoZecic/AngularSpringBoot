@@ -32,9 +32,9 @@
             [(ngModel)]="klijent.imeIPrezime" name="ImeIPrezime" />
     </div>
 
-    <button (click)="dodajKlijenta()" class="btn btn-success">Postavi klijenta</button>
+    <button [disabled]="onemogucenaForma" (click)="postaviKlijenta()" class="btn btn-success">Postavi klijenta</button>
 
-    <button (click)="postaviKlijentaNaRacunu()" class="btn btn-success">Sacuvaj</button>
+    <button [disabled]="!onemogucenaForma" (click)="sacuvaj()" class="btn btn-success">Sacuvaj</button>
 
     <p class="alert alert-success" *ngIf="uspesnaPoruka!=''">{{uspesnaPoruka}} <i class="fa fa-times" aria-hidden="true"
             (click)="zatvoriAlert('uspesno')"></i></p>

@@ -58,7 +58,8 @@ public class RacunService {
     public RacunDTO postaviStanja(RacunDTO racunDTO) {
         Optional<Racun> racun = racunRepository.findById(racunDTO.getRB());
         if (racun.isPresent()) {
-            racun.get().setStanja(racunDTO.getStanja());
+            racun.get().getStanja().clear();
+            racun.get().getStanja().addAll(racunDTO.getStanja());
             try {
                 return racunMapper.toDto(racunRepository.save(racun.get()));
             } catch (Exception ex) {

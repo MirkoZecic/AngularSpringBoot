@@ -27,8 +27,8 @@ public class Racun implements Serializable {
     @NonNull
     private String TipRacuna;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="rb")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @JoinColumn(name = "rb")
     private List<Stanje> stanja;
 
     @OneToOne(cascade = CascadeType.ALL)

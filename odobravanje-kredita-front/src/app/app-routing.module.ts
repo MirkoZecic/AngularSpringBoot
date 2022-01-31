@@ -10,11 +10,12 @@ import { KlijentListaComponent } from './components/klijent-lista/klijent-lista.
 const routes: Routes = [
   { path: '', redirectTo: 'klijenti', pathMatch: 'full' },
   { path: 'klijenti', component: KlijentListaComponent },
-  { path: 'klijenti/:id', component: KlijentDetaljiComponent },
+  // { path: 'klijenti/:id', component: KlijentDetaljiComponent },
   { path: 'dodajKlijenta', component: DodajKlijentaComponent },
   { path: 'stanja', component: StanjeListaComponent },
-  { path: 'stanja/:id', component: StanjeDetaljiComponent },
-  { path: 'dodajStanje', component: DodajStanjeComponent }
+  // { path: 'stanja/:id', component: StanjeDetaljiComponent },
+  { path: 'dodajStanje', component: DodajStanjeComponent },
+  { path: '**', redirectTo: 'klijenti' }
 ];
 
 @NgModule({

@@ -80,7 +80,10 @@ export class StanjeListaComponent implements OnInit {
         console.log(data);
         this.uspesnaPoruka = 'Uspesno promenjena stanja!';
       },
-      error: (e) => this.backObradaGreske(e)
+      error: (e) => {
+        this.backObradaGreske(e);
+        this.odustani();
+      }
     });
   }
 

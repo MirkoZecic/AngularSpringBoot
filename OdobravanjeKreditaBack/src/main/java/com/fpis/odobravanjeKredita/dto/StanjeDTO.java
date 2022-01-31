@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class StanjeDTO implements DTO{
+public class StanjeDTO implements DTO {
 
     private Integer StanjeID;
     private Double IznosStanja;

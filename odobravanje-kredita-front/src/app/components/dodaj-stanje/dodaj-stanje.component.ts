@@ -80,7 +80,10 @@ export class DodajStanjeComponent implements OnInit {
         console.log(data);
         this.uspesnaPoruka = 'Uspesno uneta stanja!';
       },
-      error: (e) => this.backObradaGreske(e)
+      error: (e) => {
+        this.backObradaGreske(e);
+        this.odustani();
+      }
     });
   }
 
